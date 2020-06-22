@@ -4,7 +4,7 @@ import {
 } from "mobx-state-tree";
 import axios from 'axios';
 import { TEST_API } from "../const/api";
-import { sliceArrayBy } from '../utils';
+import { sliceCollectionForPagination } from '../utils';
 
 export const TestItemModel = types
     .model('TestItemModel', {
@@ -31,7 +31,7 @@ export const TestStore = types
                 self.totalPages = data.productCount / self.perPage;
                 self.currentPage = data.currentPage;
                 self.productCount = data.productCount;
-                self.original = sliceArrayBy(data.pageItems, self.totalPages, self.perPage);
+                self.original = sliceCollectionForPagination(data.pageItems, self.totalPages, self.perPage);
             },
             fetchData: flow(function* () {
                 const response = yield axios.get(TEST_API)

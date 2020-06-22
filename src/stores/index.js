@@ -1,11 +1,13 @@
 import { types } from "mobx-state-tree";
 
-import {TestItemModel, TestStore} from "./TestStore";
+// Stores
+import { TestStore } from "./TestStore";
 
 const RootModel = types.model({
     TestStore,
 });
 
+// Init stores
 export const RootStore = RootModel.create({
     TestStore: {
         perPage: 10,

@@ -1,4 +1,16 @@
-export const sliceArrayBy = (array, sliceCount, sliceCountBy) => {
+/**
+ * Get sliced array by params (only for pagination), like a hashMap, but Array type
+ *
+ * @param array
+ * @param sliceCount
+ * @param sliceCountBy
+ * @returns {[]}
+ */
+export const sliceCollectionForPagination = (
+    array = [],
+    sliceCount = 0,
+    sliceCountBy = 0
+) => {
     const arrayMap = [];
     for (let i = 0; i < sliceCount; i++) {
         const start = i ? sliceCountBy * i : i;
